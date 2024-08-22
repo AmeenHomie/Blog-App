@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2> Home Page </h2>
+
+<div class="new-post-btn">
+  <a href="{% url 'new_post' %}"> Add Post </a>
+</div>
+
+<div class="user-area">
+  {% if user.is_authenticated %}
+  <p> Hi {{ user.username }} </p>
+  <form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Logout</button>
+  </form>
+</div>
+
+{% for post in object_list %}
+<div class="post-entry">
+  <h2><a href="{% url 'post_detail' post.pk %}"> {{ post.title }} </a></h2>
+  <p>{{ post.body }}</p>
+</div>
+{% endfor %}
+{% else %}
+  <p>You are not logged in</p>
+  <button><a href="{% url 'login' %}">Login</a></button>
+  {% endif %}
+{% endblock content %}
+
+<!--  object list comes from ListView in  -->

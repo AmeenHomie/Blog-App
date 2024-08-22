@@ -1,0 +1,17 @@
+*{
+  box-sizing: border-box;
+  padding: 15px;
+}
+body{
+  background-color: rgb(202, 194, 202);
+  color: #000;
+}
+.title {
+  color: red;
+  font-size: larger;
+}
+.user-area{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
